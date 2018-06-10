@@ -21,6 +21,7 @@ namespace Unit_Testing
                 flag = startApp(userInput);
 
             } while (flag);
+            Console.WriteLine("Goodbye");
 
         }
         /// <summary>
@@ -56,6 +57,7 @@ namespace Unit_Testing
                 Console.Clear();
                 Console.WriteLine(e.Message);
                 Console.WriteLine("Please enter correct value.");
+                Console.ReadLine();
 
             }
             return userInput;
@@ -81,10 +83,16 @@ namespace Unit_Testing
                     WithdrawCash();
                     return true;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Console.Clear();
                     Console.WriteLine("Transaction Incomplete");
+                    
+                }
+                finally
+                {
+                    Console.WriteLine("Exiting ATM");
+                    Console.ReadLine();
                 }
             }
             if (chosen == 3)
@@ -94,10 +102,15 @@ namespace Unit_Testing
                     DepositCash();
                     return true;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Console.Clear();
                     Console.WriteLine("Transaction Incomplete");
+                }
+                finally
+                {
+                    Console.WriteLine("Exiting ATM");
+                    Console.ReadLine();
                 }
             }
             if (chosen == 4)
@@ -133,10 +146,14 @@ namespace Unit_Testing
                 if (takeoutCash <= 0)
                 {
                     Console.WriteLine("Please enter a valid amount");
+                    Console.ReadLine();
+                    Console.Clear();
                 }
                 else if (takeoutCash > Balance)
                 {
                     Console.WriteLine("Error - you do not have enough savings.");
+                    Console.ReadLine();
+                    Console.Clear();
                 }
                 else
                 {
@@ -168,6 +185,8 @@ namespace Unit_Testing
                 if (putInCash <= 0)
                 {
                     Console.WriteLine("Please enter a valid amount");
+                    Console.ReadLine();
+                    Console.Clear();
                 }
                 else
                 {
